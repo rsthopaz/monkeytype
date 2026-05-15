@@ -162,10 +162,10 @@ async function getSvg(userData, theme, badge, leaderBoards, personalbests) {
     let leaderBoardHTML = "";
     if (leaderBoards == true) {
         topPercentage15 = formatTopPercentage(
-            userData.allTimeLbs.time["15"]["english"],
+            userData.allTimeLbs.time["15"]["indonesian"],
         );
         topPercentage60 = formatTopPercentage(
-            userData.allTimeLbs.time["60"]["english"],
+            userData.allTimeLbs.time["60"]["indonesian"],
         );
 
         const ordinalNumber = (rank) => {
@@ -186,17 +186,17 @@ async function getSvg(userData, theme, badge, leaderBoards, personalbests) {
             const time15 = allTimeLbs.time["15"] || {};
             const time60 = allTimeLbs.time["60"] || {};
 
-            rank15 = !time15.english?.rank ? "-" : time15.english.rank;
-            rank60 = !time60.english?.rank ? "-" : time60.english.rank;
+            rank15 = !time15.indonesian?.rank ? "-" : time15.indonesian.rank;
+            rank60 = !time60.indonesian?.rank ? "-" : time60.indonesian.rank;
 
             ordinalNumber15 =
-                typeof time15.english?.rank === "number"
-                    ? ordinalNumber(time15.english.rank)
+                typeof time15.indonesian?.rank === "number"
+                    ? ordinalNumber(time15.indonesian.rank)
                     : "-";
 
             ordinalNumber60 =
-                typeof time60.english?.rank === "number"
-                    ? ordinalNumber(time60.english.rank)
+                typeof time60.indonesian?.rank === "number"
+                    ? ordinalNumber(time60.indonesian.rank)
                     : "-";
         } catch (e) {
             console.log(e);
@@ -213,7 +213,7 @@ async function getSvg(userData, theme, badge, leaderBoards, personalbests) {
                 <div class="flex h-full items-center justify-center">
                     <div class="mx-5">
                         <div class="text-center font-mono text-lg font-medium tracking-wider" style="color: ${theme.subColor};">
-                            All-Time English Leaderboards
+                            All-Time indonesian Leaderboards
                         </div>
                         <div class="mt-4 flex justify-center">
                             <div>
@@ -269,10 +269,10 @@ async function getSvg(userData, theme, badge, leaderBoards, personalbests) {
     if (personalbests == true) {
         let pbTime = {};
         for (let j = 15; j <= 120; j *= 2) {
-            let english_1k = true;
-            let english = true;
-            let english_1k_pb = null;
-            let english_pb = null;
+            let indonesian_1k = true;
+            let indonesian = true;
+            let indonesian_1k_pb = null;
+            let indonesian_pb = null;
             if (userData.personalBests.time[j] != undefined) {
                 for (
                     let i = 0;
@@ -281,40 +281,40 @@ async function getSvg(userData, theme, badge, leaderBoards, personalbests) {
                 ) {
                     if (
                         userData.personalBests.time[j][i].language ==
-                            "english_1k" &&
+                            "indonesian_1k" &&
                         userData.personalBests.time[j][i].difficulty ==
                             "normal" &&
                         userData.personalBests.time[j][i].punctuation ==
                             false &&
-                        english_1k == true
+                        indonesian_1k == true
                     ) {
-                        english_1k_pb = userData.personalBests.time[j][i];
-                        english_1k = false;
+                        indonesian_1k_pb = userData.personalBests.time[j][i];
+                        indonesian_1k = false;
                     }
                     if (
                         userData.personalBests.time[j][i].language ==
-                            "english" &&
+                            "indonesian" &&
                         userData.personalBests.time[j][i].difficulty ==
                             "normal" &&
                         userData.personalBests.time[j][i].punctuation ==
                             false &&
-                        english == true
+                        indonesian == true
                     ) {
-                        english_pb = userData.personalBests.time[j][i];
-                        english = false;
+                        indonesian_pb = userData.personalBests.time[j][i];
+                        indonesian = false;
                     }
                 }
-                if (english_1k_pb == null && english_pb == null) {
+                if (indonesian_1k_pb == null && indonesian_pb == null) {
                     pbTime[j] = { wpm: "-", acc: "-" };
-                } else if (english_1k_pb != null && english_pb == null) {
-                    pbTime[j] = english_1k_pb;
-                } else if (english_1k_pb == null && english_pb != null) {
-                    pbTime[j] = english_pb;
+                } else if (indonesian_1k_pb != null && indonesian_pb == null) {
+                    pbTime[j] = indonesian_1k_pb;
+                } else if (indonesian_1k_pb == null && indonesian_pb != null) {
+                    pbTime[j] = indonesian_pb;
                 } else {
-                    if (english_1k_pb.wpm > english_pb.wpm) {
-                        pbTime[j] = english_1k_pb;
+                    if (indonesian_1k_pb.wpm > indonesian_pb.wpm) {
+                        pbTime[j] = indonesian_1k_pb;
                     } else {
-                        pbTime[j] = english_pb;
+                        pbTime[j] = indonesian_pb;
                     }
                 }
             } else {
@@ -335,10 +335,10 @@ async function getSvg(userData, theme, badge, leaderBoards, personalbests) {
         let pbWords = {};
         let words = [10, 25, 50, 100];
         for (let i = 0; i < words.length; i++) {
-            let english_1k = true;
-            let english = true;
-            let english_1k_pb = null;
-            let english_pb = null;
+            let indonesian_1k = true;
+            let indonesian = true;
+            let indonesian_1k_pb = null;
+            let indonesian_pb = null;
             if (userData.personalBests.words[words[i]] != undefined) {
                 for (
                     let j = 0;
@@ -347,41 +347,41 @@ async function getSvg(userData, theme, badge, leaderBoards, personalbests) {
                 ) {
                     if (
                         userData.personalBests.words[words[i]][j].language ==
-                            "english_1k" &&
+                            "indonesian_1k" &&
                         userData.personalBests.words[words[i]][j].difficulty ==
                             "normal" &&
                         userData.personalBests.words[words[i]][j].punctuation ==
                             false &&
-                        english_1k == true
+                        indonesian_1k == true
                     ) {
-                        english_1k_pb =
+                        indonesian_1k_pb =
                             userData.personalBests.words[words[i]][j];
-                        english_1k = false;
+                        indonesian_1k = false;
                     }
                     if (
                         userData.personalBests.words[words[i]][j].language ==
-                            "english" &&
+                            "indonesian" &&
                         userData.personalBests.words[words[i]][j].difficulty ==
                             "normal" &&
                         userData.personalBests.words[words[i]][j].punctuation ==
                             false &&
-                        english == true
+                        indonesian == true
                     ) {
-                        english_pb = userData.personalBests.words[words[i]][j];
-                        english = false;
+                        indonesian_pb = userData.personalBests.words[words[i]][j];
+                        indonesian = false;
                     }
                 }
-                if (english_1k_pb == null && english_pb == null) {
+                if (indonesian_1k_pb == null && indonesian_pb == null) {
                     pbWords[words[i]] = { wpm: "-", acc: "-" };
-                } else if (english_1k_pb != null && english_pb == null) {
-                    pbWords[words[i]] = english_1k_pb;
-                } else if (english_1k_pb == null && english_pb != null) {
-                    pbWords[words[i]] = english_pb;
+                } else if (indonesian_1k_pb != null && indonesian_pb == null) {
+                    pbWords[words[i]] = indonesian_1k_pb;
+                } else if (indonesian_1k_pb == null && indonesian_pb != null) {
+                    pbWords[words[i]] = indonesian_pb;
                 } else {
-                    if (english_1k_pb.wpm > english_pb.wpm) {
-                        pbWords[words[i]] = english_1k_pb;
+                    if (indonesian_1k_pb.wpm > indonesian_pb.wpm) {
+                        pbWords[words[i]] = indonesian_1k_pb;
                     } else {
-                        pbWords[words[i]] = english_pb;
+                        pbWords[words[i]] = indonesian_pb;
                     }
                 }
             } else {
