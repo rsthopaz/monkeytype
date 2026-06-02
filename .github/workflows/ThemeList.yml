@@ -49,7 +49,7 @@ jobs:
               with:
                 branch: update-themes-list
                 branch-suffix: timestamp
-                base: master
+                base: main
                 title: "chore: update themes json list"
                 commit-message: "chore: update themes json list"
                 delete-branch: true
