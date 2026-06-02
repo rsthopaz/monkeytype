@@ -40,7 +40,7 @@ jobs:
               with:
                 branch: update-badges-list
                 branch-suffix: timestamp
-                base: master
+                base: main
                 title: "chore: update badges json list"
                 commit-message: "chore: update badges json list"
                 delete-branch: true
